@@ -1,0 +1,66 @@
+include <iostream>
+using namespace std;
+class LibraryUser {
+public:
+virtual void registerAccount() = 0;
+virtual void requestBook() = 0;
+};
+class KidUser: public LibraryUser {
+public:
+int age;
+string bookType;
+void registerAccount() override {
+if (age < 12)
+Cout "You have successfully registered under a Kids Account" endl;.
+else
+Cout "Sorry, Age must be less than 12 to register as a kid" endl;.
+}
+void requestBook() override {
+if (bookType == "Kids")
+Cout "Book issued successfully; please return it within 10 days" endl;.
+else
+Cout "Oops, you are only allowed to take children's books" endl;.
+}
+};
+class AdultUser: public LibraryUser {
+public:
+int age;
+string bookType;
+void registerAccount() override {
+if (age > 12)
+Cout "You have successfully registered under an Adult Account" endl;.
+else
+Cout "Sorry, Age must be greater than 12 to register as an adult" endl;.
+}
+void requestBook() override {
+if (bookType == "Fiction")
+Cout "Book issued successfully; please return it within 7 days" endl;.
+else
+Cout "Oops, you are only allowed to take adult Fiction books" endl;.
+}
+};
+int main() {
+KidUser kid;
+cout << "KidUser Registration:" << endl;
+kid. age = 10;
+kid. registerAccount();
+kid. age = 18;
+kid. registerAccount();
+cout << "\nKidUser Book Request:" << endl;
+kid. bookType = "Kids";
+kid. requestBook();
+kid. bookType = "Fiction";
+kid. requestBook();
+AdultUser adult;
+cout << "\nAdultUser Registration:" << endl;
+adult. age = 5;
+adult. registerAccount();
+adult. age = 23;
+adult. registerAccount();
+cout << "\nAdultUser Book Request:" << endl;
+adult. bookType = "Kids";
+adult. requestBook();
+adult. bookType = "Fiction";
+adult. requestBook();
+return 0;
+}
