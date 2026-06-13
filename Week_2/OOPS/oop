@@ -1,0 +1,40 @@
+#include <iostream>
+using namespace std;
+class Playable {
+public:
+    virtual void play() = 0;
+};
+namespace music {
+namespace string_instrument {
+class Veena : public Playable {
+public:
+    void play() override {
+        cout << "Playing Veena" << endl;
+    }
+};
+}
+}
+namespace music {
+namespace wind {
+class Saxophone : public Playable {
+public:
+    void play() override {
+        cout << "Playing Saxophone" << endl;
+    }
+};
+}
+}
+
+int main() {
+    music::string_instrument::Veena v;
+    v.play();
+    music::wind::Saxophone s;
+    s.play();
+    Playable* p;
+    p = &v;
+    p->play();
+    p = &s;
+    p->play();
+
+    return 0;
+}
